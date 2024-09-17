@@ -299,6 +299,18 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
             add(
+                SliderSetting(
+                    IntSetting.STEPS_PER_HOUR,
+                    R.string.steps_per_hour,
+                    R.string.steps_per_hour_description,
+                    0,
+                    65535,
+                    " steps",
+                    IntSetting.STEPS_PER_HOUR.key,
+                    IntSetting.STEPS_PER_HOUR.defaultValue.toFloat()
+                )
+            )
+            add(
                 RunnableSetting(
                     R.string.console_id,
                     0,
@@ -612,7 +624,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             add(HeaderSetting(R.string.controller_dpad))
             Settings.dPadKeys.forEachIndexed { i: Int, key: String ->
                 val button = getInputObject(key)
-                add(InputBindingSetting(button, Settings.axisTitles[i]))
+                add(InputBindingSetting(button, Settings.dPadTitles[i]))
             }
 
             add(HeaderSetting(R.string.controller_triggers))
